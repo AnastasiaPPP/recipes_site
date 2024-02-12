@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column;">
+<img src="{{recipe.image.url}}" style="height: 300px; width: 300px;">
+    <h4 style="font-size: 30px">{{recipe.name}}</h4>
+<div style="font-size: 20px">
+<p>Описание - {{recipe.description}}</p>
+<p>Шаги приготовления - {{recipe.cooking_steps}}</p>
+<p>Время приготовления - {{recipe.cooking_time}}</p>
+<p>Автор - {{author}}</p></div></div>
+{% endblock %}

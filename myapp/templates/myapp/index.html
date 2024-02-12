@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<h1>Главная страница</h1>
+<p>Добро пожаловать на мой сайт!</p>
+{% for recipe in recipes %}
+<div style="display: flex; flex-direction: column;">
+
+
+        <img src="{{recipe.image.url}}" style="height: 150px; width: 150px;">
+        <p>{{ recipe.name }}</p>
+        <p>{{ recipe.description }}</p>
+        <a href="{% url 'full' recipe.pk %}">Смотреть весь рецепт</a>
+
+
+
+</div>
+
+{% endfor %}
+{% endblock %}

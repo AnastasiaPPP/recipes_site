@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Добро пожаловать в личный кабинет, {{ user.username }}!</h1>
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Выйти</button>
+</form>
+<a href="/add_recipe/" class="btn btn-primary">Добавить новый рецепт</a>
+<h3>Мои рецепты</h3>
+
+{% for recipe in recipes %}
+<div style="vertical-align: middle; padding-top: 50px;">
+    <img src="{{recipe.image.url}}" style="height: 150px; width: 200px;">
+    <a href="{% url 'full' recipe.pk %}">{{ recipe.name }}</a>
+    <p>{{recipe.description}}</p>
+    <a href="{% url 'edit' recipe.pk %}" class="btn btn-primary">Редактировать рецепт</a>
+</div>
+
+{% endfor %}
+{% else %}
+<p>Войдите в личный кабинет</p>
+<a href="{% url 'login' %}" class="btn btn-primary">Войти</a>
+
+{% endif %}
+
+
+{% endblock %}

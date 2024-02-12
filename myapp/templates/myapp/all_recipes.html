@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for recipe in recipes %}
+<div style="vertical-align: middle;">
+    <img src="{{recipe.image.url}}" style="height: 150px; width: 150px;">
+<p>{{recipe.name}}</p>
+<p>{{recipe.description}}</p>
+<a href="{% url 'full' recipe.pk %}">Смотреть весь рецепт</a>
+<a href="{% url 'edit' recipe.pk %}">Редактировать рецепт</a>
+</div>
+
+
+{% endfor %}
+{% endblock %}
